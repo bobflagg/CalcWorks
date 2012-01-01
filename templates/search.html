@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}A toy search engine{% endblock %}
+{% block head %}A toy search engine{% endblock %}
+{% block content %}
+<p>
+	The Python script <a href="https://github.com/birksworks/Search-Engine/blob/master/search_engine.py">search_engine.py</a> 
+	applies latent semantic indexing and singular value decomposition to implement a toy search engine. To run the script,
+	you'll need Python 2.6 or greater and the <a href="http://numpy.scipy.org/">numpy library</a>.  Also the Pickle file 
+	<a href="https://github.com/birksworks/Search-Engine/blob/master/lsiData.pkl">lsiData.pkl</a>
+	must be in the same directory as the script or the path to a similarly encoded
+	word-document count file must be provided on the command line.  
+	See the <a href="https://github.com/birksworks/Search-Engine/blob/master/README.txt">README</a>
+	for details.
+</p>
+{% endblock %}

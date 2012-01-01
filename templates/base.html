@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+	<head>
+		<title>CalcWorks | {% block title %}Mathematics, Machine Learning and Scientific Programming{% endblock %}</title>
+		<meta charset="utf-8">
+        <link rel='stylesheet' href='/site_media/css/style.css' type='text/css' />
+		<!--[if lte IE 6]>
+			<link rel='stylesheet' href='/site_media/css/ie.css' type='text/css' />
+		<![endif]-->
+		<style type='text/css'>
+			.backgrounded { margin-right: 1px; }
+			.backgrounded a { border: none; }
+			.backgrounded a img { border: 3px solid #fff; height: 25px; width: 25px; }
+			.backgrounded-text { margin-top: 9px; }
+		</style>
+		<script src="/site_media/js/jquery.js"></script>
+		<script src="/site_media/js/cookie.js"></script>
+		<script>
+			path = '/site_media/img/';		
+			$(document).ready(function() {
+				setTimeout('move_up()', 1);
+			});
+		</script>
+		<script>
+			function swapImg(a, image) {
+				var the_path = '/site_media/img/' + image;
+				show = new Image;
+				show.src = the_path;
+				$('body').css({ backgroundImage: 'url(' + show.src + ')', backgroundPosition: '215px 0' , backgroundRepeat: 'no-repeat' });
+		
+				var title = $('#img' + a).attr('title');
+				var caption = $('#img' + a).attr('alt');
+				
+				if (title != 'N/A') 
+				{
+					caption = (caption != 'N/A') ? ': ' + caption : '';
+					$('#backgrounded-text').html('<span style="background: white; line-height: 24px;">' + title + caption + '</span>');
+				}
+				else
+				{
+					$('#backgrounded-text').html('');
+				}
+			}
+		</script>
+		{% block external %}{% endblock %}
+</head>
+
+<body class='section-1'>
+	<div id='menu'>
+		<div class='container'>
+		
+			<div class="title"><a href="/">CalcWorks</a></div><br />
+			
+				<ul>
+					<li class='section-title'>Work</li>
+					<li {% if sample_bcd %}class="active"{% endif %}><a href='/sample/bcd/' onclick="do_click();">Pricing by Copula</a></li>
+					<li {% if sample_search %}class="active"{% endif %}><a href='/sample/search/' onclick="do_click();">Toy Search Engine</a></li>
+					<li><a href='/samples/lemur-project/' onclick="do_click();">Lemur Project</a></li>
+					<li><a href='/samples/toothbrush-tracker/' onclick="do_click();">An Intelligent Toothbrush</a></li>
+					<li><a href='/samples/building-study/' onclick="do_click();">Building Study</a></li>
+					<li><a href='/samples/women-in-canada/' onclick="do_click();">Women in Canada</a></li>
+					<li><a href='/samples/charcoal/' onclick="do_click();">Charcoal</a></li>
+					<li><a href='/samples/cartooning/2/' onclick="do_click();">Ink</a></li>
+					<li><a href='/samples/paint/' onclick="do_click();">Paint</a></li>
+				</ul>
+				
+				<ul>
+					<li class='section-title'>Info</li>
+					<li><a href='http://www.annaflagg.com/index.php?/about-me/' onclick="do_click();">About Me</a></li>
+					<li class='active'><a href='http://www.annaflagg.com/' onclick="do_click();">  </a></li>
+				</ul>
+			
+			
+		</div>	
+	</div>	
+	
+	<div id='content'>
+		<div class='container'>
+		
+			<!-- text and image -->
+	        {% block content %}{% endblock %}
+			<!-- end text and image -->
+		
+		</div>
+	</div>
+
+</body>
+</html>
