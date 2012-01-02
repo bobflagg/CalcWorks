@@ -132,6 +132,9 @@ INSTALLED_APPS = (
 #    'tagging',
 #    'mptt',
 #    'zinnia',
+    'tagging',
+    'disqus',
+    'django_yaba',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -156,3 +159,31 @@ LOGGING = {
         },
     }
 }
+
+
+###############################################
+# django-yaba specific settings below         #
+###############################################
+# GitHub UserName for sidebar GitHub List - Leave blank if you don't want to use it
+GITHUB_USERNAME = 'birksworks'
+
+# Twitter UserName for sidebar Twitter List and Automatic Tweets
+TWITTER_USERNAME = 'birksworks'
+TWITTER_PASSWORD = "purna12"
+
+# Blog Name
+BLOG_NAME = 'CalcWorks'
+
+# Blog URL
+ROOT_BLOG_URL = 'http://localhost:8000/blog/'
+
+# Root system path
+PROJECT_DIR = PROJECT_HOME
+
+# Disqus Settings
+DISQUS_API_KEY = "DISQUS_API_HOLDER"
+DISQUS_WEBSITE_SHORTNAME = "DISQUS_SHORT_HOLDER"
+
+# If you want to use contrib.comments set the following to True
+DJANGO_COMMENTS = False
+################################################
