@@ -21,6 +21,6 @@ urlpatterns = patterns('',
     (r'^sample/([^\s]+)/$', sample),
     (r'^site_media/(?P<path>.*)$', 'django.views.static.serve', { 'document_root': site_media }),
     # zinnia
-    url(r'^weblog/', include('zinnia.urls')),
-    url(r'^comments/', include('django.contrib.comments.urls')),
+#    url(r'^weblog/', include('zinnia.urls')),
+#    url(r'^comments/', include('django.contrib.comments.urls')),
 )

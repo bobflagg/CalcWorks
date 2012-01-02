@@ -123,15 +123,15 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'django.contrib.staticfiles',
+#    'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'samples',
-    'tagging',
-    'mptt',
-    'zinnia',
+#    'tagging',
+#    'mptt',
+#    'zinnia',
 )
 
 # A sample logging configuration. The only tangible logging
