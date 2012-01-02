@@ -13,6 +13,12 @@
 			.backgrounded a img { border: 3px solid #fff; height: 25px; width: 25px; }
 			.backgrounded-text { margin-top: 9px; }
 		</style>
+		<style type='text/css'>
+			#d-image img {border: none; }
+		    #d-thumbs { margin: 0px 0 0 28px; }
+		    #d-thumbs img {padding-bottom: 0px; border: none; height: 60px; width: 60px; }
+		    #d-image { }
+		</style>
 		<script src="/site_media/js/jquery.js"></script>
 		<script src="/site_media/js/cookie.js"></script>
 		<script>
@@ -42,7 +48,20 @@
 				}
 			}
 		</script>
-		{% block external %}{% endblock %}
+		<script>
+			function show_image(id) {
+				$('.pic').hide();
+				$('#p' + id).fadeIn();
+				return false;
+			}
+		</script>
+<script type="text/javascript">
+   function open_new_window(URL)
+   {
+   NewWindow = window.open(URL,"_blank","toolbar=no,menubar=0,status=0,copyhistory=0,scrollbars=yes,resizable=1,location=0,Width=1500,Height=760") ;
+   NewWindow.location = URL;
+   }
+ </script>		{% block external %}{% endblock %}
 </head>
 
 <body class='section-1'>
@@ -75,12 +94,15 @@
 	</div>	
 	
 	<div id='content'>
+		<div class="header">{% block head %}{% endblock %}</div><br />
 		<div class='container'>
-		
 			<!-- text and image -->
 	        {% block content %}{% endblock %}
-			<!-- end text and image -->
-		
+	        
+	        {% block thumbs %}{% endblock %}
+	        </br></br>
+	        {% block image %}{% endblock %}
+			<!-- end text and image -->		
 		</div>
 	</div>
 

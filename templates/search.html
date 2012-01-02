@@ -1,15 +1,26 @@
 {% extends "base.html" %}
-{% block title %}A toy search engine{% endblock %}
-{% block head %}A toy search engine{% endblock %}
+{% block title %}A Toy Search Engine{% endblock %}
+{% block head %}A Toy Search Engine{% endblock %}
 {% block content %}
 <p>
-	The Python script <a href="https://github.com/birksworks/Search-Engine/blob/master/search_engine.py">search_engine.py</a> 
+	The Python script <a href="https://github.com/birksworks/Search-Engine/blob/master/search_engine.py" target="_blank">search_engine.py</a> 
 	applies latent semantic indexing and singular value decomposition to implement a toy search engine. To run the script,
 	you'll need Python 2.6 or greater and the <a href="http://numpy.scipy.org/">numpy library</a>.  Also the Pickle file 
-	<a href="https://github.com/birksworks/Search-Engine/blob/master/lsiData.pkl">lsiData.pkl</a>
+	<a href="https://github.com/birksworks/Search-Engine/blob/master/lsiData.pkl" target="_blank">lsiData.pkl</a>
 	must be in the same directory as the script or the path to a similarly encoded
 	word-document count file must be provided on the command line.  
-	See the <a href="https://github.com/birksworks/Search-Engine/blob/master/README.txt">README</a>
+	See the <a href="https://github.com/birksworks/Search-Engine/blob/master/README.txt" target="_blank">README</a>
 	for details.
 </p>
+
+<p>
+	The most important parameter for determining the behavior of the search engine 
+	specifies the number of components (k) to be used in truncated svd. Large values will result in more
+	literal searches with little clustering of concepts.  Small values will result in large clusters
+	with few distinctions among keywords.  As the scree plot below suggests an ideal choice for 
+	the number of components for the default data set is 10.
+</p>
+
+<div style="margin-left:62px;"><IMG SRC="/site_media/img/scree.jpg" ALT="image"></div>
+
 {% endblock %}

@@ -82,6 +82,14 @@ h4 { font-size: 12px; }
 
 #once { clear: left; }
 
+div.header {
+	margin-top:10px;
+	font-weight:bold;
+	color:#666;
+	font-size:12px;
+	letter-spacing:0.08em;
+}
+
 div.title a {
 	font-weight:bold;
 	color:#666;

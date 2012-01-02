@@ -1,26 +1,48 @@
 {% extends "base.html" %}
 {% block title %}Pricing by Copula{% endblock %}
-{% block head %}Pricing by Copula{% endblock %}
+{% block head %}Pricing Basket Credit Default Swaps by Copula{% endblock %}
 {% block content %}
 <p>
-	The Python script <a href="https://github.com/birksworks/Search-Engine/blob/master/search_engine.py">search_engine.py</a> 
-	applies latent semantic indexing and singular value decomposition to implement a toy search engine. To run the script,
-	you'll need Python 2.6 or greater and the <a href="http://numpy.scipy.org/">numpy library</a>.  Also the Pickle file 
-	<a href="https://github.com/birksworks/Search-Engine/blob/master/lsiData.pkl">lsiData.pkl</a>
-	must be in the same directory as the script or the path to a similarly encoded
-	word-document count file must be provided on the command line.  
-	See the <a href="https://github.com/birksworks/Search-Engine/blob/master/README.txt">README</a>
-	for details.
+To fulfill part of the <a href="#" onClick="open_new_window('http://www.cqf.com/');">CQF</a> project requirements, I 
+built a Java SWING application for pricing k-th to default basket credit 
+default swap contracts, using Gaussian and Student’s t copula models. The underlying
+theory is explained in a <a href="/site_media/pdf/bcd.pdf" target="_blank">project report</a> and
+the screen shots below show the look and feel of the application.
 </p>
+{% endblock %}
 
-<p>
-	The most important parameter for determining the behavior of the search engine 
-	specifies the number of components (k) to be used in truncated svd. Large values will result in more
-	literal searches with little clustering of concepts.  Small values will result in large clusters
-	with few distinctions among keywords.  As the scree plot below suggests an ideal choice for 
-	the number of components for the default data set is 10.
-</p>
+{% block image %}
+<div id='p1' class='pic' style='display: block;'><a href='#' onclick="show_image(2); return false;">
+<img src='/site_media/img/bcd.png' width='400' height='301' class='img-bot' /></a><p><em></em><br />&nbsp;</p></div>
 
-<div style="margin-left:62px;"><IMG SRC="/site_media/img/scree.jpg" ALT="image"></div>
+<div id='p2' class='pic' style='display: none;'><a href='#' onclick="show_image(3); return false;">
+<img src='/site_media/img/bcd-re.png' width='373' height='185' class='img-bot' /></a><p><em></em><br />&nbsp;</p></div>
+
+<div id='p3' class='pic' style='display: none;'><a href='#' onclick="show_image(4); return false;">
+<img src='/site_media/img/bcd-cs.png' width='381' height='209' class='img-bot' /></a><p><em></em><br />&nbsp;</p></div>
+
+<div id='p4' class='pic' style='display: none;'><a href='#' onclick="show_image(5); return false;">
+<img src='/site_media/img/bcd-psp.png' width='379' height='199' class='img-bot' /></a><p><em></em><br />&nbsp;</p></div>
+
+<div id='p5' class='pic' style='display: none;'><a href='#' onclick="show_image(6); return false;">
+<img src='/site_media/img/bcd-pr.png' width='491' height='70' class='img-bot' /></a><p><em></em><br />&nbsp;</p></div>
+
+<div id='p6' class='pic' style='display: none;'><a href='#' onclick="show_image(7); return false;">
+<img src='/site_media/img/bcd-cr.png' width='491' height='306' class='img-bot' /></a><p><em></em><br />&nbsp;</p></div>
+
+<div id='p7' class='pic' style='display: none;'><a href='#' onclick="show_image(1); return false;">
+<img src='/site_media/img/bcd-sr.png' width='491' height='226' class='img-bot' /></a><p><em></em><br />&nbsp;</p></div>
 
 {% endblock %}
+
+{% block thumbs %}
+	<a href='#' onclick="show_image(1);return false;"><img src='/site_media/img/bcd-logo.png' alt='&nbsp;' title='' id='img1' class='png' /></a>
+	<a href='#' onclick="show_image(2);return false;"><img src='/site_media/img/check.gif' alt='&nbsp;' title='' id='img2' class='png' /></a>
+	<a href='#' onclick="show_image(3);return false;"><img src='/site_media/img/search.png' alt='&nbsp;' title='' id='img3' class='png' /></a>
+	<a href='#' onclick="show_image(4);return false;"><img src='/site_media/img/run.png' alt='&nbsp;' title='' id='img4' class='png' /></a>
+	<a href='#' onclick="show_image(5);return false;"><img src='/site_media/img/check.gif' alt='&nbsp;' title='' id='img5' class='png' /></a>
+	<a href='#' onclick="show_image(6);return false;"><img src='/site_media/img/spreadsheet.png' alt='&nbsp;' title='' id='img6' class='png' /></a>
+	<a href='#' onclick="show_image(7);return false;"><img src='/site_media/img/spreadsheet.png' alt='&nbsp;' title='' id='img7' class='png' /></a>
+{% endblock %}
+
+
