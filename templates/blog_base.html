@@ -1,111 +1,71 @@
 <!doctype html>
+{% load navbar %}
 <html>
-	<head>
-		<title>CalcWorks | {% block title %}Mathematics, Machine Learning and Scientific Programming{% endblock %}</title>
-		<meta charset="utf-8">
-        <link rel='stylesheet' href='/site_media/css/style.css' type='text/css' />
-		<!--[if lte IE 6]>
-			<link rel='stylesheet' href='/site_media/css/ie.css' type='text/css' />
-		<![endif]-->
-		<style type='text/css'>
-			.backgrounded { margin-right: 1px; }
-			.backgrounded a { border: none; }
-			.backgrounded a img { border: 3px solid #fff; height: 25px; width: 25px; }
-			.backgrounded-text { margin-top: 9px; }
-		</style>
-		<style type='text/css'>
-			#d-image img {border: none; }
-		    #d-thumbs { margin: 0px 0 0 28px; }
-		    #d-thumbs img {padding-bottom: 0px; border: none; height: 60px; width: 60px; }
-		    #d-image { }
-		</style>
-		<script src="/site_media/js/jquery.js"></script>
-		<script src="/site_media/js/cookie.js"></script>
-		<script>
-			path = '/site_media/img/';		
-			$(document).ready(function() {
-				setTimeout('move_up()', 1);
-			});
-		</script>
-		<script>
-			function swapImg(a, image) {
-				var the_path = '/site_media/img/' + image;
-				show = new Image;
-				show.src = the_path;
-				$('body').css({ backgroundImage: 'url(' + show.src + ')', backgroundPosition: '215px 0' , backgroundRepeat: 'no-repeat' });
-		
-				var title = $('#img' + a).attr('title');
-				var caption = $('#img' + a).attr('alt');
-				
-				if (title != 'N/A') 
-				{
-					caption = (caption != 'N/A') ? ': ' + caption : '';
-					$('#backgrounded-text').html('<span style="background: white; line-height: 24px;">' + title + caption + '</span>');
-				}
-				else
-				{
-					$('#backgrounded-text').html('');
-				}
-			}
-		</script>
-		<script>
-			function show_image(id) {
-				$('.pic').hide();
-				$('#p' + id).fadeIn();
-				return false;
-			}
-		</script>
-<script type="text/javascript">
-   function open_new_window(URL)
-   {
-   NewWindow = window.open(URL,"_blank","toolbar=no,menubar=0,status=0,copyhistory=0,scrollbars=yes,resizable=1,location=0,Width=1500,Height=760") ;
-   NewWindow.location = URL;
-   }
- </script>		{% block external %}{% endblock %}
+<head>
+	<title>{% sitename %}</title>
+	<meta charset="utf-8">
+	<link href="/site_media/blog/css/layout.css" rel="stylesheet" type="text/css" />
+	<!--[if lte IE 7]>
+	<link href="/site_media/blog/css/patch_layout.css" rel="stylesheet" type="text/css" />
+	<![endif]-->
+	<script src="/site_media/blog/js/slide.js"></script>
+	{% load get_setting %}
+	{% get_setting "DJANGO_COMMENTS" "django_comments" %}
+	{% if django_comments %}
+		{% load comments %}
+	{% else %}
+		{% load disqus_tags %}
+	{% endif %}
 </head>
-
-<body class='section-1'>
-	<div id='menu'>
-		<div class='container'>
-		
-			<div class="title"><a href="/">CalcWorks</a></div><br />
-			
-				<ul>
-					<li class='section-title'>Work</li>
-					<li {% if sample_bcd %}class="active"{% endif %}><a href='/sample/bcd/' onclick="do_click();">Pricing by Copula</a></li>
-					<li {% if sample_search %}class="active"{% endif %}><a href='/sample/search/' onclick="do_click();">Toy Search Engine</a></li>
-					<li><a href='/samples/lemur-project/' onclick="do_click();">Lemur Project</a></li>
-					<li><a href='/samples/toothbrush-tracker/' onclick="do_click();">An Intelligent Toothbrush</a></li>
-					<li><a href='/samples/building-study/' onclick="do_click();">Building Study</a></li>
-					<li><a href='/samples/women-in-canada/' onclick="do_click();">Women in Canada</a></li>
-					<li><a href='/samples/charcoal/' onclick="do_click();">Charcoal</a></li>
-					<li><a href='/samples/cartooning/2/' onclick="do_click();">Ink</a></li>
-					<li><a href='/samples/paint/' onclick="do_click();">Paint</a></li>
-				</ul>
-				
-				<ul>
-					<li class='section-title'>Info</li>
-					<li {% if blog_active %}class="active"{% endif %}><a href='/blog/' onclick="do_click();">Blog</a></li>
-					<li><a href='http://www.annaflagg.com/index.php?/about-me/' onclick="do_click();">About Me</a></li>
-					<li class='active'><a href='http://www.annaflagg.com/' onclick="do_click();">  </a></li>
-				</ul>
-			
-			
-		</div>	
-	</div>	
-	
-	<div id='content'>
-		<div class="header">{% block head %}{% endblock %}</div><br />
-		<div class='container'>
-			<!-- text and image -->
-	        {% block content %}{% endblock %}
-	        
-	        {% block thumbs %}{% endblock %}
-	        </br></br>
-	        {% block image %}{% endblock %}
-			<!-- end text and image -->		
-		</div>
-	</div>
-
+<body>
+  <div class="page_margins">
+    <div class="page">
+      <div id="header">
+        <div id="topnav">
+          <!-- start: skip link navigation -->
+          <a class="skip" title="skip link" href="#navigation">Skip to the navigation</a><span class="hideme">.</span>
+          <a class="skip" title="skip link" href="#content">Skip to the content</a><span class="hideme">.</span>
+          <form action="{% url blog-search %}" method="get">
+              <label for="q">Search:</label>
+              <input type="text" id="q" size="13" name="q" />
+          </form>
+          <!-- end: skip link navigation <a href="#">Login</a> | <a href="#">Contact</a> | <a href="#">Imprint</a> -->
+        </div>
+        <h1> {% sitename %} </h1>
+      </div>
+      <div id="nav">
+        <!-- skiplink anchor: navigation -->
+        <a id="navigation" name="navigation"></a>
+        <div class="hlist">
+          <!-- main navigation: horizontal list -->
+          <ul>
+            <li><a href="{{ ROOT_URL }}">Home</a></li>
+            <li><a href="{{ ROOT_URL }}/feeds/rss">RSS Feed</a></li>
+            <li><a href="{{ ROOT_URL }}/gallery/list">Galleries</a></li>
+            {% main_nav %}
+        </div>
+      </div>
+      <div id="main">
+        <div id="col1">
+          <div id="col1_content" class="clearfix">
+<!-- start main content -->
+          {% block content %}
+          {% endblock %}
+<!-- end main content -->
+          </div>
+        </div>
+            {% sidebar %}
+            <hr />
+<!-- End sidebar -->
+          </div>
+          <!-- IE Column Clearing -->
+          <div id="ie_clearing"> &amp;#160; </div>
+        </div>
+      </div>
+      <!-- begin: #footer -->
+      <div id="footer">Layout based on <a href="http://www.yaml.de/">YAML</a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

@@ -1,0 +1,80 @@
+{% extends "blog_base.html" %}
+<!-- start main content -->
+{% block content %}
+    {% if heading %}
+        <h1>{{ heading }}</h1>
+    {% endif %}
+    {% for post in posts.object_list %}
+       <div id="story-title-{{ post.id }}" class="span-6">
+        <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+        <hr />
+       </div>
+       <div id="story-body-{{ post.id }}" class="span-18">
+         {{ post.body|safe }}
+          {% if post.photo_set %}
+            <!-- The following courtesy of http://slideshow.triptracker.net/ -->
+            <script type="text/javascript">
+            <!--
+              var viewer{{ post.id }} = new PhotoViewer();
+              {% for photo in post.photo_set.all|slice:"3" %}
+              viewer{{ post.id }}.add('{{ MEDIA_URL }}{{ photo.image }}');
+              {% endfor %}
+              // -->
+            </script>
+            {% for photo in post.photo_set.all|slice:"3" %}
+                   <a href="{{ MEDIA_URL }}{{ photo.image }}" onclick="return viewer{{ post.id }}.show({{ forloop.counter0 }})"> <img width="100" height="100" src="{{ photo.image.thumb_url }}" alt="" /> </a>
+            {% endfor %}
+           <p><a href="{{ post.get_absolute_url }}">Click to see the rest of the gallery</a><p>
+          {% endif %}
+         <hr />
+         <p class="small">Updated {{ post.modified|date:"m/d/y @ h:iA T" }} by {{post.owner}}</p>
+         <p class="story_cat"><u>Categories</u>: 
+         {% for x in post.category.all %}<a href="{{ x.get_absolute_url }}">{{ x }}</a> {% endfor %}
+         </p>
+         <!-- start tags -->
+         <p><u>Tags</u>: {% for tag in post.get_tags %}
+         <a href="/tags/{{ tag }}">{{ tag }}</a>
+         {% endfor %}</p>
+         <!-- end tags -->
+         <hr />
+         <!-- start social media -->
+         <p>
+           <a href="http://reddit.com/submit?url={{ ROOT_URL }}{{ post.get_absolute_url }}amp;title={{ post.title
+           }}"><img src="{{ MEDIA_URL }}/blog/images/reddit.gif" alt="Reddit" /></a>
+           <a href="http://digg.com/submit?phase=2amp;url={{ ROOT_URL }}{{ post.get_absolute_url }}"><img src="{{ MEDIA_URL }}/blog/images/digg.gif" alt="Digg it!" /></a>
+           <a href="http://www.stumbleupon.com/submit?url={{ ROOT_URL }}{{ post.get_absolute_url }}amp;title={{
+               post.title }}"><img src="{{ MEDIA_URL }}/blog/images/stumble-upon.jpg" alt="StumbleUpon" /></a>
+           <a href="http://del.icio.us/post?url={{ ROOT_URL }}{{ post.get_absolute_url }}amp;title={{ post.title
+           }}"><img src="{{ MEDIA_URL }}/blog/images/delicious.gif" alt="Delicious!" /></a>
+         </p>
+         <!-- stop social media -->
+         <!-- start comments -->
+         {% if post.enable_comments %}
+         <hr />
+         {% load get_setting %}
+         {% get_setting "DJANGO_COMMENTS" "django_comments" %}
+         {% if django_comments %}
+           {% load comments %}
+           {% get_comment_count for post as post_count %}
+           <a href="{{ post.get_absolute_url }}">{{ post_count }} Comments</a>
+         {% else %}
+           {% load disqus_tags %}
+             <a href="{{ post.get_absolute_url }}#disqus_thread">View Comments</a>
+             {% disqus_num_replies %}
+         {% endif %}
+         {% endif %}
+         <!-- end comments -->
+       </div>
+       <hr />
+    {% endfor %}
+    <!-- start pagination -->
+    <div class="pagination">
+        <span class="step-links">
+        {% if posts.has_previous %}<a href="?page={{ posts.previous_page_number }}" class="util-link">previous</a>{% endif %}
+        {% if posts.has_next %}<a href="?page={{ posts.next_page_number }}" class="util-link">next</a>{% endif %}
+        </span>
+             <h3>Page {{ posts.number }} of {{ posts.paginator.num_pages }}</h3>
+    <!-- end pagination -->
+    </div>
+{% endblock %}
+<!-- end main content -->
