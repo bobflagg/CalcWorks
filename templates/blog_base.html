@@ -18,6 +18,35 @@
   {% else %}
     {% load disqus_tags %}
   {% endif %}
+		<script src="/site_media/js/jquery.js"></script>
+		<script src="/site_media/js/cookie.js"></script>
+		<script>
+			path = '/site_media/img/';		
+			$(document).ready(function() {
+				setTimeout('move_up()', 1);
+			});
+		</script>
+		<script>
+			function swapImg(a, image) {
+				var the_path = '/site_media/img/' + image;
+				show = new Image;
+				show.src = the_path;
+				$('body').css({ backgroundImage: 'url(' + show.src + ')', backgroundPosition: '215px 0' , backgroundRepeat: 'no-repeat' });
+		
+				var title = $('#img' + a).attr('title');
+				var caption = $('#img' + a).attr('alt');
+				
+				if (title != 'N/A') 
+				{
+					caption = (caption != 'N/A') ? ': ' + caption : '';
+					$('#backgrounded-text').html('<span style="background: white; line-height: 24px;">' + title + caption + '</span>');
+				}
+				else
+				{
+					$('#backgrounded-text').html('');
+				}
+			}
+		</script>
 	<script>
 		function show_image(id) {
 			$('.pic').hide();
