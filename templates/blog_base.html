@@ -18,6 +18,13 @@
   {% else %}
     {% load disqus_tags %}
   {% endif %}
+	<script>
+		function show_image(id) {
+			$('.pic').hide();
+			$('#p' + id).fadeIn();
+			return false;
+		}
+	</script>
 
 </head>
 <body>
