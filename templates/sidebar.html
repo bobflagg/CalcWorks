@@ -51,7 +51,7 @@
                 <ul>
                 {% for month in month_range %}
                  {% ifequal year.year month.year %}
-                  <li><a href="/archives/{{ year.year}}-{{ month|date:"m" }}">{{ month|date:"F" }}</a></li>
+                  <li><a href="/blog/archives/{{ year.year}}-{{ month|date:"m" }}">{{ month|date:"F" }}</a></li>
                  {% endifequal %}
                 {% endfor %}
                 </ul>
