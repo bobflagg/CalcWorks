@@ -175,7 +175,7 @@ TWITTER_PASSWORD = "purna12"
 BLOG_NAME = 'The Unreasonable Effectiveness of Data'
 
 # Blog URL
-ROOT_BLOG_URL = 'http://http://birksworks.webfactional.com/blog/'
+ROOT_BLOG_URL = 'http://birksworks.webfactional.com/blog/'
 
 # Root system path
 PROJECT_DIR = PROJECT_HOME
