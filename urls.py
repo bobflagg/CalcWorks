@@ -17,10 +17,10 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    (r'^$', main),
-    (r'^sample/([^\s]+)/$', sample),
+    #(r'^$', main),
+    #(r'^sample/([^\s]+)/$', sample),
     (r'^site_media/(?P<path>.*)$', 'django.views.static.serve', { 'document_root': site_media }),
-    url(r'^blog/', include('django_yaba.urls')),
+    url(r'^([^\s]+)/$', include('django_yaba.urls')),
     # zinnia
 #    url(r'^weblog/', include('zinnia.urls')),
 #    url(r'^comments/', include('django.contrib.comments.urls')),

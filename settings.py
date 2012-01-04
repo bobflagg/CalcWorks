@@ -67,7 +67,7 @@ STATIC_URL = '/static/'
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
-ADMIN_MEDIA_PREFIX = '/static/admin/'
+ADMIN_MEDIA_PREFIX = '/site_media/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -175,7 +175,7 @@ TWITTER_PASSWORD = "purna12"
 BLOG_NAME = 'The Unreasonable Effectiveness of Data'
 
 # Blog URL
-ROOT_BLOG_URL = 'http://localhost:8000/blog/'
+ROOT_BLOG_URL = 'http://localhost:8000/'
 
 # Root system path
 PROJECT_DIR = PROJECT_HOME
