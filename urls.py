@@ -20,7 +20,7 @@ urlpatterns = patterns('',
     #(r'^$', main),
     #(r'^sample/([^\s]+)/$', sample),
     (r'^site_media/(?P<path>.*)$', 'django.views.static.serve', { 'document_root': site_media }),
-    url(r'^([^\s]+)/?$', include('django_yaba.urls')),
+    url(r'^([^\s]*)/?$', include('django_yaba.urls')),
     # zinnia
 #    url(r'^weblog/', include('zinnia.urls')),
 #    url(r'^comments/', include('django.contrib.comments.urls')),
