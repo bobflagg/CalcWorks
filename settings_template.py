@@ -16,7 +16,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'birksworks',
         'USER': 'birksworks',
-        'PASSWORD': 'yugioh60',
+        'PASSWORD': '********',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -169,7 +169,7 @@ GITHUB_USERNAME = 'birksworks'
 
 # Twitter UserName for sidebar Twitter List and Automatic Tweets
 TWITTER_USERNAME = 'birksworks'
-TWITTER_PASSWORD = "purna12"
+TWITTER_PASSWORD = '********'
 
 # Blog Name
 BLOG_NAME = 'The Unreasonable Effectiveness of Data'
