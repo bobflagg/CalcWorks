@@ -43,7 +43,7 @@ class Sample(models.Model):
         (4, "Archived"),
     )
 
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=80)
     slug = models.SlugField()
     category = models.ManyToManyField(Category)
     body = models.TextField()
