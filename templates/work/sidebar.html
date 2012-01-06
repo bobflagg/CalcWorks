@@ -1,0 +1,50 @@
+{% load cache %}
+{% cache 1800 worksidebar %}
+        <div id="col3">
+          <div id="col3_content" class="clearfix">
+<!-- start sidebar -->
+   <!-- start work samples -->
+            <h3> Work Samples</h3>
+            <ul>
+              {% for sample in work_samples %}
+              <li><a href="{{ sample.get_absolute_url }}">{{ sample }}</a></li>
+              {% endfor %}
+            </ul>
+            <hr />
+   <!-- Start Tweet -->
+            <h3> Recent Tweets: </h3>
+            {% load tweet %}
+            <ul>
+               {% twitter_user_timeline NULL as twitter_entries %}
+               {% if twitter_entries %}
+                   {% for entry in twitter_entries %}
+                       <li>{{ entry.created_at|date:"d M Y H:i" }} - {{ entry.text }}</li>
+                   {% endfor %}
+               {% endif %}
+            </ul>
+               <p><a href="http://www.twitter.com/{{ tweet_user }}">Follow me on Twitter</a></p>
+            <hr />
+   <!-- Stop Tweet -->
+   <!-- start github -->
+            {% if commit %}
+            <h3> GitHub Commits </h3>
+            {{ commit|safe }}
+            <hr />
+            {% endif %}
+   <!-- stop github -->
+   <!-- start archive -->
+             {% if year_range %}
+              <h3> Archives</h3>
+              {% for year in year_range %}
+                <h4>{{ year.year }}</h4>
+                <ul>
+                {% for month in month_range %}
+                 {% ifequal year.year month.year %}
+                  <li><a href="/blog/archives/{{ year.year}}-{{ month|date:"m" }}">{{ month|date:"F" }}</a></li>
+                 {% endifequal %}
+                {% endfor %}
+                </ul>
+              {% endfor %}
+             {% endif %}
+   <!-- stop archive -->
+   {% endcache %}            

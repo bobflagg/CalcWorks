@@ -1,52 +1,45 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-{% load navbar %}
+{% load worknavbar %}
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>Bob Flagg's Blog</title>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-<!-- add your meta tags here -->
-
-<link href="/site_media/blog/css/layout.css" rel="stylesheet" type="text/css" />
-<!--[if lte IE 7]>
-<link href="media/css/patch_layout.css" rel="stylesheet" type="text/css" />
-<![endif]-->
-<script type="text/javascript"    src="{{ MEDIA_URL }}js/slide.js"></script>
-{% load get_setting %}
-{% get_setting "DJANGO_COMMENTS" "django_comments" %}
-  {% if django_comments %}
-    {% load comments %}
-  {% else %}
-    {% load disqus_tags %}
-  {% endif %}
-		<script src="/site_media/js/jquery.js"></script>
-		<script src="/site_media/js/cookie.js"></script>
-		<script>
-			path = '/site_media/img/';		
-			$(document).ready(function() {
-				setTimeout('move_up()', 1);
-			});
-		</script>
-		<script>
-			function swapImg(a, image) {
-				var the_path = '/site_media/img/' + image;
-				show = new Image;
-				show.src = the_path;
-				$('body').css({ backgroundImage: 'url(' + show.src + ')', backgroundPosition: '215px 0' , backgroundRepeat: 'no-repeat' });
-		
-				var title = $('#img' + a).attr('title');
-				var caption = $('#img' + a).attr('alt');
-				
-				if (title != 'N/A') 
-				{
-					caption = (caption != 'N/A') ? ': ' + caption : '';
-					$('#backgrounded-text').html('<span style="background: white; line-height: 24px;">' + title + caption + '</span>');
-				}
-				else
-				{
-					$('#backgrounded-text').html('');
-				}
+	<title>Bob Flagg</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<!-- add your meta tags here -->
+	
+	<link href="/site_media/blog/css/layout.css" rel="stylesheet" type="text/css" />
+	<!--[if lte IE 7]>
+	<link href="media/css/patch_layout.css" rel="stylesheet" type="text/css" />
+	<![endif]-->
+	<script type="text/javascript"    src="{{ MEDIA_URL }}js/slide.js"></script>
+	<script src="/site_media/js/jquery.js"></script>
+	<script src="/site_media/js/cookie.js"></script>
+	<script>
+		path = '/site_media/img/';		
+		$(document).ready(function() {
+			setTimeout('move_up()', 1);
+		});
+	</script>
+	<script>
+		function swapImg(a, image) {
+			var the_path = '/site_media/img/' + image;
+			show = new Image;
+			show.src = the_path;
+			$('body').css({ backgroundImage: 'url(' + show.src + ')', backgroundPosition: '215px 0' , backgroundRepeat: 'no-repeat' });
+	
+			var title = $('#img' + a).attr('title');
+			var caption = $('#img' + a).attr('alt');
+			
+			if (title != 'N/A') 
+			{
+				caption = (caption != 'N/A') ? ': ' + caption : '';
+				$('#backgrounded-text').html('<span style="background: white; line-height: 24px;">' + title + caption + '</span>');
 			}
-		</script>
+			else
+			{
+				$('#backgrounded-text').html('');
+			}
+		}
+	</script>
 	<script>
 		function show_image(id) {
 			$('.pic').hide();
@@ -66,8 +59,8 @@
           <a class="skip" title="skip link" href="#content">Skip to the content</a><span class="hideme">.</span>
           <!-- end: skip link navigation <a href="#">Login</a> | <a href="#">Contact</a> | <a href="#">Imprint</a> -->
         </div>
-        <h1> The Unreasonable Effectiveness of Data  </h1>
-        <h3> Bob Flagg's blog on mathematics, machine learning and scientific programming </h3>
+        <h1> Bob Flagg </h1>
+        {% if subheading %}<h3> {{ subheading }} </h3>{% endif %}
       </div>
       <div id="nav">
         <!-- skiplink anchor: navigation -->
@@ -80,7 +73,6 @@
             <li><a href="/work/">Work</a></li>
             <li><a href="/about/">About</a></li>
             <li><a href="/contact/">Contact</a></li>
-            {% main_nav %}
         </div>
       </div>
       <div id="main">
@@ -92,7 +84,7 @@
 <!-- end main content -->
           </div>
         </div>
-            {% sidebar %}
+            {% worksidebar %}
             <hr />
 <!-- End sidebar -->
           </div>

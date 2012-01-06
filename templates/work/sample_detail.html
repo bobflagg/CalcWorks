@@ -1,0 +1,33 @@
+{% extends "work/base.html" %}
+<!-- start main content -->
+{% block content %}
+    {% if heading %}
+        <h1>{{ heading }}</h1>
+    {% endif %}
+       <div id="story-title-{{ samples.id }}" class="span-6">
+        <h2><a href="{{ samples.get_absolute_url }}">{{ samples.title }}</a></h2>
+        <hr />
+       </div>
+       <div id="sample-body-{{ samples.id }}" class="span-18">
+         {{ samples.body|safe }}
+          {% if sample.photo_set %}
+            <!-- The following courtesy of http://slideshow.triptracker.net/ -->
+            <script type="text/javascript">
+            <!--
+              var viewer{{ samples.id }} = new PhotoViewer();
+              {% for photo in samples.photo_set.all|slice:"3" %}
+              viewer{{ samples.id }}.add('{{ MEDIA_URL }}{{ photo.image }}');
+              {% endfor %}
+              // -->
+            </script>
+            {% for photo in samples.photo_set.all|slice:"3" %}
+                   <a href="{{ MEDIA_URL }}{{ photo.image }}" onclick="return viewer{{ sample.id }}.show({{ forloop.counter0 }})"> <img width="100" height="100" src="{{ photo.image.thumb_url }}" alt="" /> </a>
+            {% endfor %}
+           <p><a href="{{ samples.get_absolute_url }}">Click to see the rest of the gallery</a><p>
+          {% endif %}
+         <hr />
+       </div>
+       <hr />
+    </div>
+{% endblock %}
+<!-- end main content -->

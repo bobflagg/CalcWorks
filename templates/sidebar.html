@@ -11,6 +11,21 @@
               {% endfor %}
             </ul>
             <hr />
+   <!-- start archive -->
+             {% if year_range %}
+              <h3> Archives</h3>
+              {% for year in year_range %}
+                <h4>{{ year.year }}</h4>
+                <ul>
+                {% for month in month_range %}
+                 {% ifequal year.year month.year %}
+                  <li><a href="/blog/archives/{{ year.year}}-{{ month|date:"m" }}">{{ month|date:"F" }}</a></li>
+                 {% endifequal %}
+                {% endfor %}
+                </ul>
+              {% endfor %}
+             {% endif %}
+   <!-- stop archive -->
    <!-- start links -->
             <h3> Links </h3>
             <ul>
@@ -43,20 +58,5 @@
             <hr />
             {% endif %}
    <!-- stop github -->
-   <!-- start archive -->
-             {% if year_range %}
-              <h3> Archives</h3>
-              {% for year in year_range %}
-                <h4>{{ year.year }}</h4>
-                <ul>
-                {% for month in month_range %}
-                 {% ifequal year.year month.year %}
-                  <li><a href="/blog/archives/{{ year.year}}-{{ month|date:"m" }}">{{ month|date:"F" }}</a></li>
-                 {% endifequal %}
-                {% endfor %}
-                </ul>
-              {% endfor %}
-             {% endif %}
-   <!-- stop archive -->
    {% endcache %}            
             
