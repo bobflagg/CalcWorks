@@ -10,7 +10,7 @@
         <hr />
        </div>
        <div id="story-body-{{ post.id }}" class="span-18">
-         {{ post.body|safe }}
+         <p>{{ post.abstract|safe }} <a href="{{ post.get_absolute_url }}">More...</a></p>
           {% if post.photo_set %}
             <!-- The following courtesy of http://slideshow.triptracker.net/ -->
             <script type="text/javascript">

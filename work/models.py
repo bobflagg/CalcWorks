@@ -46,6 +46,7 @@ class Sample(models.Model):
     title = models.CharField(max_length=80)
     slug = models.SlugField()
     category = models.ManyToManyField(Category)
+    abstract = models.TextField()
     body = models.TextField()
     owner = models.ForeignKey(User)
     status = models.IntegerField(choices=STATUS_CHOICES, default=1)

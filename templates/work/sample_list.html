@@ -10,7 +10,7 @@
         <hr />
        </div>
        <div id="sample-body-{{ post.id }}" class="span-18">
-         {{ sample.body|safe }}
+         <p>{{ sample.abstract|safe }} <a href="{{ sample.get_absolute_url }}">More...</a></p>
           {% if sample.photo_set %}
             <!-- The following courtesy of http://slideshow.triptracker.net/ -->
             <script type="text/javascript">
@@ -28,7 +28,6 @@
           {% endif %}
          <hr />
        </div>
-       <hr />
     {% endfor %}
     <!-- start pagination -->
     <div class="pagination">
